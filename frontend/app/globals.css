@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #0a0a0a;
+  --color-void-card: #111111;
+  --color-void-border: #1a1a1a;
+  --color-signal: #ff3333;
+  --signal-glow: #ff3333;
+  --color-human: #00ccff;
+  --color-ai: #cc66ff;
+  --color-neutral: #888888;
+  --color-text: #e0e0e0;
+  --color-text-dim: #666666;
+  --color-critical: #ff3333;
+  --color-high: #ff6633;
+  --color-medium: #ffaa33;
+  --color-low: #33cc66;
+  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: #0a0a0a;
+  color: #e0e0e0;
+  font-family: var(--font-mono);
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+@keyframes pulse-signal {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(255, 51, 51, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(255, 51, 51, 0.6); }
+}
+
+.animate-pulse-signal {
+  animation: pulse-signal 2s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.breaking-badge {
+  background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
+  animation: pulse-signal 1.5s ease-in-out infinite;
+}
+
+.bias-low { color: #33cc66; }
+.bias-medium { color: #ffaa33; }
+.bias-high { color: #ff6633; }
+.bias-critical { color: #ff3333; }
+
+.tag-human {
+  border: 1px solid #00ccff;
+  color: #00ccff;
+}
+.tag-ai {
+  border: 1px solid #cc66ff;
+  color: #cc66ff;
+}
+
+.signal-card {
+  transition: all 0.2s ease;
+  border: 1px solid #1a1a1a;
+}
+.signal-card:hover {
+  border-color: #333;
+  background: #151515;
+}
